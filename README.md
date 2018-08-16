@@ -13,4 +13,4 @@ Capabilities:
 - Time-Specified MAC Address changing (broken right now)
 
 
-Also, the text and other feautures are buggy
+Also, the text and other features are buggy
