@@ -1,4 +1,4 @@
-# ----Script by Adevtc----
+# ----Script by Jon ----
 
 import sys
 import os
