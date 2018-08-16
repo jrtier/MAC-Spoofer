@@ -11,3 +11,6 @@ Capabilities:
 - Custom MAC Address
 - Reset MAC Address (broken right now)
 - Time-Specified MAC Address changing (broken right now)
+
+
+Also, the text and other feautures are buggy
