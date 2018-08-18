@@ -13,4 +13,12 @@ Capabilities:
 - Time-Specified MAC Address changing (broken right now)
 
 
-Also, the text and other features are buggy
+Also, the text and other features are buggy -- still in beta!!!
+
+Installation:
+
+    1. Download mac-changer.py file
+    2. Open up terminal window
+    3. Make sure python is installed
+    4. Type 'python3 ' then drag the mac-changer.py file into the terminal window
+    5. Press enter
