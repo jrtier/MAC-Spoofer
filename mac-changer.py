@@ -64,8 +64,6 @@ print("\033[0;32m 2 \033[0;37m-- \033[0;94mCustom MAC-ADDRESS ")
 print("")
 print("\033[0;32m 3 \033[0;37m-- \033[0;94mReset to original MAC-ADDRESS ")
 print("")
-print("\033[0;32m 4 \033[0;37m-- \033[0;94mTime-Specified MAC-ADDRESS CHANGING ")
-print("")
 print("")
 
 customChoice=input("\033[92m[?] \033[96mChoice -->")
