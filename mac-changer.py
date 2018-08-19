@@ -49,11 +49,6 @@ print('''\033[1;36m
         
 ''')
 
-in_file = open("mac.txt", "w+")
-os.system("ifconfig en0 | awk '/ether/{print $2}' >> mac.txt")
-contents = in_file.read()
-in_file.close()
-
 
 print("\033[0;37mType the number shown before the specific string to gain access to its contents")
 print("\033[0;31m")
@@ -115,7 +110,10 @@ if customChoice==('1') :
     startNewMac=input("[     ]: ")
     time.sleep(1)
 
-
+    in_file = open("mac.txt", "w+")
+    os.system("ifconfig en0 | awk '/ether/{print $2}' >> mac.txt")
+    read = in_file.read()
+    in_file.close()
         
     if startNewMac==('y') :
         os.system("sudo ifconfig en0 up")
@@ -239,7 +237,22 @@ if customChoice==('3') :
     print("")
    
 
-    print(contents)
+    in_file = open("mac.txt")
+    read = in_file.read()
+    os.system("sudo ifconfig en0 up")
+    os.system("sudo ifconfig en0 ether " + read)
+    os.system("sudo ifconfig en0 down")
+    slowprint("MAC-Address changed")
+    print("Running safety procedure")
+    os.system("networksetup -setairportpower en0 off")
+    slowprint("WiFi disabled for MAC-Address non-logging purposes")
+    time.sleep(0.2)
+    os.system("networksetup -setairportpower en0 on")
+    slowprint("WiFi re-enabled")
+    time.sleep(0.2)
+    print("Your new custom MAC-Address")
+    print("")
+    os.system("ifconfig en0 |grep ether")
     os.system("rm mac.txt")
 
 
