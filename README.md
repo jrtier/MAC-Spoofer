@@ -9,11 +9,8 @@ Capabilities:
 
 - Generate Custom MAC Address
 - Custom MAC Address
-- Reset MAC Address (broken right now)
-- Time-Specified MAC Address changing (broken right now)
+- Reset MAC Address **FIXED**
 
-
-Also, the text and other features are buggy -- still in beta!!!
 
 Installation:
 
