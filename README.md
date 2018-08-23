@@ -8,7 +8,7 @@ users and I'll make one eventually to work with Windows 10 systems.
 **UPDATES**
     - I've fixed some basic bugs (colors, and MAC Address resetting)
     - I've also cleaned up the look and made it easier for work-flow
-    - This will be the latest update until I release more of this script so it's compatible for Windows 10 Users.
+    - This will be the latest update until I release more of this script so it's compatible for Windows 10 Users
     - I will be making a blog-post about this application on my website --> https://www.addevtec.com (in projects)
     
 Capabilities:
