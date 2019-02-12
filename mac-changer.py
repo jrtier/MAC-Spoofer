@@ -12,7 +12,6 @@ class ColorEscapeSequences:
     blue = "\033[0;94m"
     turquoise = "\033[96m"
 
-
 os.system('clear')
 print(f'''{ColorEscapeSequences.turquoise}
 
@@ -35,15 +34,8 @@ if customChoice == '1':
     startNewMac=input("[     ]: ")
     print("\n\nRunning procedure...")
     if startNewMac == 'y':
-        os.system("sudo ifconfig en0 up")
-        os.system("sudo ifconfig en0 ether " + "02:00:00:%02x:%02x:%02x" % (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
-        os.system("sudo ifconfig en0 down")
-        print("MAC-Address spoofed\nRunning safety procedure")
-        os.system("networksetup -setairportpower en0 off")
-        print("WiFi disabled for MAC-Address non-logging purposes")
-        os.system("networksetup -setairportpower en0 on")
-        print("WiFi re-enabled\nYour new randomly-generated MAC-Address\n")
-        os.system("ifconfig en0 | awk '/ether/{print $2}'")
+        os.system("sudo ifconfig en0 up; sudo ifconfig en0 ether 02:00:00:%02x:%02x:%02x; sudo ifconfig en0 down; networksetup -setairportpower en0 off; networksetup -setairportpower en0 on" % (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+        print(f"Your new randomly-generated MAC-Address\n{os.system("ifconfig en0 | awk '/ether/{print $2}'")}")
 
     if startNewMac == 'n':
         os.system("clear")
@@ -55,31 +47,16 @@ if customChoice == '2':
     try:
         userinput=(input(""))
         print("Running procedure")
-        os.system("sudo ifconfig en0 up")
-        os.system("sudo ifconfig en0 ether " + userinput)
-        os.system("sudo ifconfig en0 down")
-        print("MAC-Address spoofed\nRunning safety procedure")
-        os.system("networksetup -setairportpower en0 off")
-        print("WiFi disabled for MAC-Address non-logging purposes")
-        os.system("networksetup -setairportpower en0 on")
-        print("WiFi re-enabled\nYour new custom MAC-Address\n")
-        os.system("ifconfig en0 | awk '/ether/{print $2}'")
+        os.system(f"sudo ifconfig en0 up; sudo ifconfig en0 ether {userinput}; sudo ifconfig en0 down; networksetup -setairportpower en0 off; networksetup -setairportpower en0 on")
+        print(f"Your new custom MAC-Address\n{os.system("ifconfig en0 | awk '/ether/{print $2}'")}")
     except ValueError:
         print("Not a valid MAC-Address")
 
 if customChoice == '3':
     os.system("clear")
-    print("\n\nResetting MAC-Address")
-    print("Gathering data from mac.txt")
+    print("\n\nResetting MAC-Address\nGathering data from mac.txt")
     with open("mac.txt", "r+") as in_file:
         read = in_file.read()
-    os.system("sudo ifconfig en0 up")
-    os.system("sudo ifconfig en0 ether " + read)
-    os.system("sudo ifconfig en0 down")
-    print("MAC-Address spoofed\nRunning safety procedure")
-    os.system("networksetup -setairportpower en0 off")
-    print("WiFi disabled for MAC-Address non-logging purposes")
-    os.system("networksetup -setairportpower en0 on")
-    print("WiFi re-enabled\nYour old MAC-Address\n")
-    os.system("ifconfig en0 | awk '/ether/{print $2}'")
+    os.system(f"sudo ifconfig en0 up; sudo ifconfig en0 ether {read}; sudo ifconfig en0 down; networksetup -setairportpower en0 off; networksetup -setairportpower en0 on")
+    print(f"Your old MAC-Address\n{os.system("ifconfig en0 | awk '/ether/{print $2}'")}")
     os.system("rm mac.txt")
