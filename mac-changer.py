@@ -25,7 +25,11 @@ print(f'''{ColorEscapeSequences.turquoise}
 print(f"{ColorEscapeSequences.lightgrey}Type the number shown before the specific string to gain access to its contents{ColorEscapeSequences.red}\n\nCurrent MAC-Address:{ColorEscapeSequences.lightgrey}\n")
 os.system("ifconfig en0 | awk '/ether/{print $2}'")
 print(f"\n\n{ColorEscapeSequences.green} 1 {ColorEscapeSequences.lightgrey}-- {ColorEscapeSequences.blue}Random-Generated MAC-ADDRESS\n\n{ColorEscapeSequences.green} 2 {ColorEscapeSequences.lightgrey}-- {ColorEscapeSequences.blue}Custom MAC-ADDRESS \n\n{ColorEscapeSequences.green} 3 {ColorEscapeSequences.lightgrey}-- {ColorEscapeSequences.blue}Reset to original MAC-ADDRESS\n\n")
-os.system("ifconfig en0 | awk '/ether/{print $2}' >> mac.txt")
+
+doesMacExist = os.popen("ls").read()
+if "mac.txt" not in doesMacExist:
+    os.system("ifconfig en0 | awk '/ether/{print $2}' >> mac.txt")
+
 customChoice=input(f"{ColorEscapeSequences.green}[?] {ColorEscapeSequences.turquoise}Choice --> {ColorEscapeSequences.lightgrey}")
 
 if customChoice == '1':
